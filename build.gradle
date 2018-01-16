@@ -1,0 +1,55 @@
+loadConfiguration()
+
+def loadConfiguration() {
+    def environment = hasProperty('env') ? env : 'dev'
+    println(environment);
+    ext.environment='';
+    project.setProperty('environment', environment)
+}
+
+buildscript {
+    repositories {
+	    mavenLocal()
+	    mavenCentral()
+	}
+    ext {
+        springBootVersion = '1.5.9.RELEASE'
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'maven'
+    version =  '0.0.1'
+    group = 'my.wechat.service'
+
+    bootRepackage {
+        enabled = false
+    }
+    repositories {
+	    mavenLocal()
+	    mavenCentral()
+	}
+
+    artifacts {
+        archives jar
+    }
+    
+
+    task copyConfiguration << {
+        println "Target environment: $environment"
+        copy {
+            from "src/main/env/$environment"
+            into "src/main/resources/core"
+            include "**/*.properties"
+        }
+    }
+    processResources.dependsOn copyConfiguration
+}
+
+description = '微信小程序服务'

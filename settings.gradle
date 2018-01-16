@@ -1,0 +1,4 @@
+include 'wechat-app-common'
+include 'wechat-app-control'
+include 'wechat-app-core'
+include 'wechat-app-codegen'

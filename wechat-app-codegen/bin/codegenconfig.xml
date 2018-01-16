@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="gbk" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="codegen.xsd">
+
+	<properties>
+		<property name="company" value="nyh"></property>
+		<property name="project" value="app"></property>
+		<property name="module" value="userInfo"></property>
+		<property name="developer" value="niuxudong[niu_xu_dong@163.com]"></property>
+	</properties>
+
+
+	<database>
+		<dbHelperClass>com.nyh.app.db.impl.MySqlHelper</dbHelperClass>
+		<url>jdbc:mysql://39.106.51.17:3306/test</url>
+		<username>root</username>
+		<password>root123</password>
+	</database>
+
+	<table tableName="USER_INFO">
+		<variable name="class" value="UserInfo" />
+	</table>
+
+	<templates basepath="/Users/niu_xd/weChatService/wechat-app-codegen/src/main/resources/template">
+		<template id="po" path="po.ftl" />
+		<template id="domain" path="domain.ftl" />
+		<template id="mapper" path="mapper.ftl" />
+		<template id="mapper-xml" path="mapper-xml.ftl" />
+		<template id="service" path="service.ftl" />
+		<template id="vo" path="vo.ftl" />
+		<template id="serviceimpl" path="serviceimpl.ftl" />
+	</templates>
+
+	<files baseDir="/Users/niu_xd/weChatService">
+		<file refTemplate="po" filename="{class}Po.java"
+			dir="wechat-app-core/src/main/java/com/{company}/{project}/core/orm/{module}/po" />
+		<file refTemplate="domain" filename="{class}.java"
+			dir="wechat-app-core/src/main/java/com/{company}/{project}/core/orm/{module}/domain" />
+		<file refTemplate="mapper" filename="{class}Mapper.java"
+			dir="wechat-app-core/src/main/java/com/{company}/{project}/core/orm/{module}/mapper" />
+		<file refTemplate="service" filename="{class}Service.java"
+			dir="wechat-app-core/src/main/java/com/{company}/{project}/core/service/{module}" />
+		<file refTemplate="serviceimpl" filename="{class}ServiceImpl.java"
+			dir="wechat-app-core/src/main/java/com/{company}/{project}/core/service/{module}/impl" />
+		<file refTemplate="vo" filename="{class}Vo.java"
+			dir="wechat-app-common/src/main/java/com/{company}/{project}/common/vo/{module}" />
+	</files>
+
+</config>
