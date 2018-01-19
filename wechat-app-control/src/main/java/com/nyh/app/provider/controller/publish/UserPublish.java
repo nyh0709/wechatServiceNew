@@ -1,4 +1,4 @@
-package com.nyh.app.publish;
+package com.nyh.app.provider.controller.publish;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.nyh.app.common.vo.publish.PublishVo;
 import com.nyh.app.core.service.publish.UserPublishService;
-import com.nyh.app.provider.anotation.IgnoreUserId;
 import com.nyh.app.provider.controller.AbstractController;
 
 
